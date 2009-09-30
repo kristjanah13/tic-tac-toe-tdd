@@ -6,7 +6,7 @@ public class Row {
 		
 	}
 
-	public Result areAll(Mark mark) {
+	public Mark getCommonMark() {
 		return null;
 	}
 
