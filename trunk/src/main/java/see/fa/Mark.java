@@ -27,4 +27,8 @@ public enum Mark {
 			.isEquals();
 	}
 
+	public static int hashCode(Mark[]... marks) {
+		return 0;
+	}
+
 }
