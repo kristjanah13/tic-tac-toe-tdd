@@ -1,6 +1,7 @@
 package see.fa;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public enum Mark {
 
@@ -28,7 +29,7 @@ public enum Mark {
 	}
 
 	public static int hashCode(Mark[]... marks) {
-		return 0;
+		return new HashCodeBuilder().append(marks).toHashCode();
 	}
 
 }
