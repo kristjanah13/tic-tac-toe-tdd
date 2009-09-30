@@ -1,8 +1,8 @@
 package see.fa;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
-
 import junit.framework.TestCase;
+
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class MarkTest extends TestCase {
 	
@@ -43,15 +43,19 @@ public class MarkTest extends TestCase {
 	}
 	
 	public void testHashCodeShouldUseAllMarksToGenerateHashCode() {
-		Mark[][] marks = {{Mark.X}, {Mark.O}, {Mark.X}};
+		Mark[][] marks = {{Mark.X}, {Mark.O}, {Mark.NONE}};
 		
 		int hashCode = Mark.hashCode(marks);
 		
-		assertEquals("Should have used all mark elements for the hash cdoe.", new HashCodeBuilder().append(marks).toHashCode(), hashCode);
+		assertEquals("Should have used all mark elements for the hash code.", new HashCodeBuilder().append(marks).toHashCode(), hashCode);
 	}
 
 	public void testToStringShouldUseAllMarksToGenerateToString() {
+		Mark[][] marks = {{Mark.X, Mark.O, Mark.NONE}};
 		
+		String toString = Mark.toString(marks);
+		
+		assertEquals("Should have used all mark elements for the hash code.", "\nX O _\n" , toString);
 	}
 
 }
