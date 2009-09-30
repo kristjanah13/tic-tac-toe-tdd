@@ -32,4 +32,8 @@ public enum Mark {
 		return new HashCodeBuilder().append(marks).toHashCode();
 	}
 
+	public static String toString(Mark[][]  marks) {
+		return null;
+	}
+
 }
