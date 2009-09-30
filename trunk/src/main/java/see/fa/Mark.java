@@ -38,6 +38,10 @@ public enum Mark {
 		return new HashCodeBuilder().append(marks).toHashCode();
 	}
 
+	public static String toString(Mark[] marks) {
+		return null;
+	}
+
 	public static String toString(Mark[][]  marks) {
 		List<String> rowToStrings = new LinkedList<String>();
 		for(Mark[] row : marks) {
