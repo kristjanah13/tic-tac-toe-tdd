@@ -10,7 +10,9 @@ public class TicTacToe {
 
 	public Result move(Position position, Mark mark) {
 		board.set(position, mark);
-		return null;
+		
+		Row row = board.getRow(position);
+		return row.areAll(mark);
 	}
 
 	public Board getBoard() {

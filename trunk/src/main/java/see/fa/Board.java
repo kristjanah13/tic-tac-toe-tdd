@@ -32,6 +32,11 @@ public class Board {
 		marks[effectiveRow][effectiveCol] = mark;
 	}
 
+	public Row getRow(Position position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !Board.class.isAssignableFrom(obj.getClass())) {
@@ -65,6 +70,7 @@ public class Board {
 			.append(ROW_SEPARATOR)
 			.toString();
 	}
+
 	
 	
 
