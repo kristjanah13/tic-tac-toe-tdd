@@ -22,6 +22,11 @@ public class TicTacToe {
 			return colResult;
 		}
 		
+		Result diagResult = Result.valueOf(board.getDiag(position));
+		if(diagResult != Result.GAME_NOT_FINISH) {
+			return diagResult;
+		}
+		
 		return Result.GAME_NOT_FINISH; 
 	}
 
