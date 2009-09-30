@@ -41,6 +41,10 @@ public class Board {
 		return new Line(lineMarks);
 	}
 
+	public Line getDiag(Position position) {
+		return null;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !Board.class.isAssignableFrom(obj.getClass())) {
