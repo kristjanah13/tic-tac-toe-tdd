@@ -33,8 +33,8 @@ public class Board {
 	}
 
 	public Row getRow(Position position) {
-		// TODO Auto-generated method stub
-		return null;
+		int effectiveRow = position.getX() - 1;
+		return new Row(marks[effectiveRow]);
 	}
 
 	@Override
