@@ -12,7 +12,7 @@ public class TicTacToe {
 		board.set(position, mark);
 		
 		Row row = board.getRow(position);
-		return row.areAll(mark);
+		return Result.valueOf(row.getCommonMark());
 	}
 
 	public Board getBoard() {
