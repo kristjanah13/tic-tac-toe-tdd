@@ -18,7 +18,7 @@ public class TicTacToe {
 		}
 		
 		Result colResult = Result.valueOf(board.getCol(position));
-		if(rowResult != Result.GAME_NOT_FINISH) {
+		if(colResult != Result.GAME_NOT_FINISH) {
 			return colResult;
 		}
 		
