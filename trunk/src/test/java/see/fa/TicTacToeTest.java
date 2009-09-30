@@ -19,7 +19,20 @@ public class TicTacToeTest extends TestCase {
 	}
 
 	public void testGivenPosition_AndMark_WhenMove_ThenMarkPosition() {
+		Position givenPosition = new Position(1, 1);
+		Mark givenMark = Mark.X;
 		
+		ticTacToe.move(givenPosition, givenMark);
+		
+		Board resultingBoard = ticTacToe.getBoard();
+		
+		assertEquals("Should have marked the board at the specified position.",
+				new Board(new Mark[][]{
+					{Mark.X, Mark.NONE, Mark.NONE},
+					{Mark.NONE, Mark.NONE, Mark.NONE},
+					{Mark.NONE, Mark.NONE, Mark.NONE}
+				}), 
+				resultingBoard);
 	}
 
 	public void testGivenPosition_AndMark_AndTwoSameMarksInHorizontalLine_WhenMove_ThenWinGameForMark() {
