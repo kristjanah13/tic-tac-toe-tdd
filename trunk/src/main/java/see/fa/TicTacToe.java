@@ -8,7 +8,7 @@ public class TicTacToe {
 		board = new Board();
 	}
 
-	public Result move(Position position, Mark mark) {
+	public void move(Position position, Mark mark) {
 		board.set(position, mark);
 	}
 
