@@ -2,8 +2,11 @@ package see.fa;
 
 public class Row {
 
+	public Row(Mark... marks) {
+		
+	}
+
 	public Result areAll(Mark mark) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
