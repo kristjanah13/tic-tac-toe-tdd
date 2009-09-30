@@ -21,7 +21,7 @@ public class Row {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj == null || Row.class.isAssignableFrom(obj.getClass())) {
+		if(obj == null || !Row.class.isAssignableFrom(obj.getClass())) {
 			return false;
 		}
 		
