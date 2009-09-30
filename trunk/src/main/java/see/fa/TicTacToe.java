@@ -13,7 +13,7 @@ public class TicTacToe {
 	}
 
 	public Board getBoard() {
-		return null;
+		return board;
 	}
 
 }
