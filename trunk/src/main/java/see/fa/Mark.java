@@ -2,7 +2,7 @@ package see.fa;
 
 public enum Mark {
 
-	X('X'), NONE('_');
+	X('X'), O('O'), NONE('_');
 
 	private final char symbol;
 
