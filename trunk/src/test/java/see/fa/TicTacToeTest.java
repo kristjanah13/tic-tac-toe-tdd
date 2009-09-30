@@ -36,7 +36,13 @@ public class TicTacToeTest extends TestCase {
 	}
 
 	public void testGivenPosition_AndMark_AndTwoSameMarksInHorizontalLine_WhenMove_ThenWinGameForMark() {
+		Mark givenSameMark = Mark.X;
 		
+		ticTacToe.move(new Position(1, 1), givenSameMark);
+		ticTacToe.move(new Position(1, 2), givenSameMark);
+		Result result = ticTacToe.move(new Position(1, 3), givenSameMark);
+		
+		assertEquals("Should have won the game for X.", Result.X_WINS, result);
 	}
 	
 	public void testGivenPosition_AndMark_AndTwoSameMarksInHorizontalLine_WhenMove_ThenLoseGameForOtherMark() {
