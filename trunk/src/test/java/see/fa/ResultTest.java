@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 public class ResultTest extends TestCase {
 
 	public void testGivenNullRow_WhenValueOf_ThenReturnGameNotFinish() {
-		Row givenNullRow = null;
+		Line givenNullRow = null;
 		
 		Result result = Result.valueOf(givenNullRow);
 		
@@ -13,7 +13,7 @@ public class ResultTest extends TestCase {
 	}
 	
 	public void testGivenAllXRows_WhenValueOf_ThenReturnXWins() {
-		Row givenAllXRows = new Row(Mark.X, Mark.X, Mark.X);
+		Line givenAllXRows = new Line(Mark.X, Mark.X, Mark.X);
 		
 		Result result = Result.valueOf(givenAllXRows);
 		
@@ -21,7 +21,7 @@ public class ResultTest extends TestCase {
 	}
 	
 	public void testGivenAllORows_WhenValueOf_ThenReturnOWins() {
-		Row givenAllXRows = new Row(Mark.O, Mark.O, Mark.O);
+		Line givenAllXRows = new Line(Mark.O, Mark.O, Mark.O);
 		
 		Result result = Result.valueOf(givenAllXRows);
 		
@@ -29,7 +29,7 @@ public class ResultTest extends TestCase {
 	}
 	
 	public void testGivenContainsANoneMark_WhenValueOf_ThenReturnGameNotFinish() {
-		Row givenAllXRows = new Row(Mark.NONE, Mark.NONE, Mark.NONE);
+		Line givenAllXRows = new Line(Mark.NONE, Mark.NONE, Mark.NONE);
 		
 		Result result = Result.valueOf(givenAllXRows);
 		

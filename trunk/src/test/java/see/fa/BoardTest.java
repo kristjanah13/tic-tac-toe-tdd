@@ -13,8 +13,8 @@ public class BoardTest extends TestCase {
 			}
 		);
 		
-		Row rowAtPosition = board.getRow(new Position(1,1));
+		Line rowAtPosition = board.getRow(new Position(1,1));
 		
-		assertEquals("Should have retrieved 1st row.", new Row(Mark.X, Mark.O, Mark.NONE), rowAtPosition);
+		assertEquals("Should have retrieved 1st row.", new Line(Mark.X, Mark.O, Mark.NONE), rowAtPosition);
 	}
 }

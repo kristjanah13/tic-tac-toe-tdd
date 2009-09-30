@@ -17,8 +17,8 @@ public enum Result {
 		WINNING_MARK_TO_RESULT = Collections.unmodifiableMap(winningMarkToResult);
 	}
 	
-	public static Result valueOf(Row row) {
-		Mark commonMark = row != null ? row.getCommonMark() : null;
+	public static Result valueOf(Line line) {
+		Mark commonMark = line != null ? line.getCommonMark() : null;
 		
 		Result result = WINNING_MARK_TO_RESULT.containsKey(commonMark) ? WINNING_MARK_TO_RESULT.get(commonMark) : GAME_NOT_FINISH; 
 		

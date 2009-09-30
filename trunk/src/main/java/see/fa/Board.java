@@ -24,9 +24,9 @@ public class Board {
 		marks[effectiveRow][effectiveCol] = mark;
 	}
 
-	public Row getRow(Position position) {
+	public Line getRow(Position position) {
 		int effectiveRow = position.getX() - 1;
-		return new Row(marks[effectiveRow]);
+		return new Line(marks[effectiveRow]);
 	}
 
 	@Override
@@ -48,6 +48,10 @@ public class Board {
 	@Override
 	public String toString() {
 		return Mark.toString(marks);
+	}
+
+	public Line getCol(Position position) {
+		return null;
 	}
 
 	

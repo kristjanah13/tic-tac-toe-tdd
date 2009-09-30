@@ -1,10 +1,10 @@
 package see.fa;
 
-public class Row {
+public class Line {
 
 	private final Mark[] marks;
 
-	public Row(Mark... marks) {
+	public Line(Mark... marks) {
 		this.marks = marks;
 	}
 
@@ -21,11 +21,11 @@ public class Row {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj == null || !Row.class.isAssignableFrom(obj.getClass())) {
+		if(obj == null || !Line.class.isAssignableFrom(obj.getClass())) {
 			return false;
 		}
 		
-		Row that = (Row)obj;
+		Line that = (Line)obj;
 		return Mark.equals(this.marks, that.marks);
 	}
 
