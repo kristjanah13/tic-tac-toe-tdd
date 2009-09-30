@@ -1,5 +1,8 @@
 package see.fa;
 
+import java.util.LinkedList;
+import java.util.List;
+
 
 public class Board {
 
@@ -29,6 +32,15 @@ public class Board {
 		return new Line(marks[effectiveRow]);
 	}
 
+	public Line getCol(Position position) {
+		int effecitveCol = position.getY() - 1;
+		List<Mark> lineMarks = new LinkedList<Mark>();
+		for(Mark[] row : marks) {
+			lineMarks.add(row[effecitveCol]);
+		}
+		return new Line(lineMarks);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !Board.class.isAssignableFrom(obj.getClass())) {
@@ -49,12 +61,5 @@ public class Board {
 	public String toString() {
 		return Mark.toString(marks);
 	}
-
-	public Line getCol(Position position) {
-		return null;
-	}
-
-	
-	
 
 }

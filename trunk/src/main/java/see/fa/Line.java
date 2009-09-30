@@ -1,11 +1,17 @@
 package see.fa;
 
+import java.util.List;
+
 public class Line {
 
 	private final Mark[] marks;
 
 	public Line(Mark... marks) {
 		this.marks = marks;
+	}
+
+	public Line(List<Mark> marks) {
+		this(marks.toArray(new Mark[marks.size()]));
 	}
 
 	public Mark getCommonMark() {
