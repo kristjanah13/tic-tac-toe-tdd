@@ -1,5 +1,7 @@
 package see.fa;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+
 public enum Mark {
 
 	X('X'), O('O'), NONE('_');
@@ -14,4 +16,15 @@ public enum Mark {
 	public String toString() {
 		return String.valueOf(symbol);
 	}
+
+	public static boolean equals(Mark[] lhs, Mark[] rhs) {
+		return equals(new Mark[][]{lhs}, new Mark[][]{rhs});
+	}
+
+	public static boolean equals(Mark[][] lhs, Mark[][] rhs) {
+		return new EqualsBuilder()
+			.append(lhs, rhs)
+			.isEquals();
+	}
+
 }
