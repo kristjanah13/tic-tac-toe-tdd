@@ -19,11 +19,25 @@ public class MarkTest extends TestCase {
 		
 		boolean are2DMarkArrayEquals = Mark.equals(lhs, rhs);
 		
-		assertTrue("Mark array with same elements should have been equal.", are2DMarkArrayEquals);
+		assertTrue("2D Mark array with same elements should have been equal.", are2DMarkArrayEquals);
 	}
 
 	public void testGivenNonEqualMarkArrays_WhenEquals_ThenFalse() {
+		Mark[] lhs = {Mark.X, Mark.O, Mark.NONE};
+		Mark[] rhs = {Mark.X, Mark.O, Mark.X};
 		
+		boolean areMarkArrayEquals = Mark.equals(lhs, rhs);
+		
+		assertFalse("Mark array with different elements should NOT have been equal.", areMarkArrayEquals);
+	}
+	
+	public void testGivenNon2DEqualMarkArrays_WhenEquals_ThenFalse() {
+		Mark[][] lhs = {{Mark.X}, {Mark.O}, {Mark.NONE}};
+		Mark[][] rhs = {{Mark.X}, {Mark.O}, {Mark.X}};
+		
+		boolean are2DMarkArrayEquals = Mark.equals(lhs, rhs);
+		
+		assertFalse("2D Mark array with different elements should NOT have been equal.", are2DMarkArrayEquals);
 	}
 	
 	public void testHashCodeShouldUseAllMarksToGenerateHashCode() {
