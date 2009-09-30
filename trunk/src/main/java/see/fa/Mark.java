@@ -1,5 +1,9 @@
 package see.fa;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
@@ -7,6 +11,8 @@ public enum Mark {
 
 	X('X'), O('O'), NONE('_');
 
+	private static final String ROW_SEPARATOR = "\n";
+	private static final String COL_SEPARATOR = " ";
 	private final char symbol;
 
 	private Mark(char symbol){
@@ -33,7 +39,16 @@ public enum Mark {
 	}
 
 	public static String toString(Mark[][]  marks) {
-		return null;
+		List<String> rowToStrings = new LinkedList<String>();
+		for(Mark[] row : marks) {
+			rowToStrings.add(StringUtils.join(row, COL_SEPARATOR));
+		}
+		
+		return new StringBuilder()
+			.append(ROW_SEPARATOR)
+			.append(StringUtils.join(rowToStrings, ROW_SEPARATOR))
+			.append(ROW_SEPARATOR)
+			.toString();
 	}
 
 }
