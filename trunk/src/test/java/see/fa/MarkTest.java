@@ -51,6 +51,14 @@ public class MarkTest extends TestCase {
 	}
 
 	public void testToStringShouldUseAllMarksToGenerateToString() {
+		Mark[] marks = {Mark.X, Mark.O, Mark.NONE};
+		
+		String toString = Mark.toString(marks);
+		
+		assertEquals("Should have used all mark elements for the hash code.", "\nX O _\n" , toString);
+	}
+	
+	public void testToStringShouldUseAllMarksOf2DMarkArrayToGenerateToString() {
 		Mark[][] marks = {{Mark.X, Mark.O, Mark.NONE}};
 		
 		String toString = Mark.toString(marks);
