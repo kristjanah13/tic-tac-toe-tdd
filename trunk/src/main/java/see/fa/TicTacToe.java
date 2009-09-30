@@ -1,6 +1,5 @@
 package see.fa;
 
-import org.apache.commons.lang.ObjectUtils;
 
 public class TicTacToe {
 	
@@ -14,7 +13,7 @@ public class TicTacToe {
 		board.set(position, mark);
 		
 		Row row = board.getRow(position);
-		return Result.valueOf(ObjectUtils.toString(row.getCommonMark()));
+		return Result.valueOf(row);
 	}
 
 	public Board getBoard() {
