@@ -39,7 +39,7 @@ public enum Mark {
 	}
 
 	public static String toString(Mark[] marks) {
-		return null;
+		return toString(new Mark[][]{marks});
 	}
 
 	public static String toString(Mark[][]  marks) {
