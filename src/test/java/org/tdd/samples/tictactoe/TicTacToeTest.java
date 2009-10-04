@@ -61,16 +61,45 @@ public class TicTacToeTest extends TestSuite {
 	}
 	
 	public abstract static class AbstractGivenRunningGame_WhenMove extends AbstractTicTacToeTest {
+
+		protected Mark nextMark;
+		
+		@Override
+		protected void setUp() throws Exception {
+			super.setUp();
+			
+			ticTacToe.move(new MarkedPosition(2, 2, Mark.X));
+			nextMark = Mark.O;
+		}
+
+		@Override
+		protected void tearDown() throws Exception {
+			nextMark = null;
+			super.tearDown();
+		}
 		
 	}
 
 	public static class GivenRunningGame_WhenMove extends AbstractGivenRunningGame_WhenMove {
 		public void testGivenAMarkedPositionThatIsNotYetOccupied_ThenDotNotThrowIllegalMoveException() {
+			MarkedPosition givenMarkedPositionThatIsNotYetOccupied = new MarkedPosition(3, 3, nextMark);
 			
+			try {
+				ticTacToe.move(givenMarkedPositionThatIsNotYetOccupied);
+			} catch (IllegalMoveException illegalMoveException) {
+				fail("Should NOT have thrown an " + illegalMoveException);
+			}
 		}
 
 		public void testGivenAMarkedPositionThatIsAlreadyOccupied_ThenThrowIllegalMoveException() {
+			MarkedPosition givenMarkedPositionThatIsAlreadyOccupied = new MarkedPosition(2, 2, nextMark);
 			
+			try {
+				ticTacToe.move(givenMarkedPositionThatIsAlreadyOccupied);
+				fail("Should have thrown an " + IllegalMoveException.class.getName());
+			} catch (IllegalMoveException illegalMoveException) {
+				
+			}
 		}
 		
 		public void testGivenAMarkedPositionWithinTheBoard_WhenMove_ThenDoNotThrowIllegalMoveException() {
