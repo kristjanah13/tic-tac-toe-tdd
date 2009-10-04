@@ -30,7 +30,7 @@ public class Board {
 	}
 
 	public boolean contains(Position position) {
-		return false;
+		return position.getEffectiveRow() < 3 && position.getEffectiveColumn() < 3;
 	}
 
 	public boolean isMarked(Position position) {
