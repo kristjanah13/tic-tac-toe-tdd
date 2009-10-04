@@ -9,7 +9,12 @@ public class TicTacToe {
 	}
 
 	public void move(MarkedPosition markedPosition) {
-		if(!board.contains(markedPosition.getPosition())) {
+		if(markedPosition.getMark() != Mark.X && markedPosition.getMark() != Mark.O ) {
+			throw new IllegalMoveException(new StringBuilder()
+				.append(markedPosition.getMark())
+				.append(" is not a valid mark.")
+				.toString());
+		} else if(!board.contains(markedPosition.getPosition())) {
 			throw new IllegalMoveException(new StringBuilder()
 				.append(markedPosition.getPosition())
 				.append(" is outside the board.")
