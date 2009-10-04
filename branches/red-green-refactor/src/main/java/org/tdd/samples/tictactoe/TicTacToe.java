@@ -9,7 +9,7 @@ public class TicTacToe {
 	}
 
 	public void move(MarkedPosition markedPosition) {
-		if(board.contains(markedPosition.getPosition())) {
+		if(board.isMarked(markedPosition.getPosition())) {
 			throw new IllegalMoveException(new StringBuilder()
 				.append(markedPosition.getPosition())
 				.append(" is already occupied.")
