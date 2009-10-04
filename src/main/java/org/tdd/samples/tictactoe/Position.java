@@ -40,6 +40,14 @@ public class Position {
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this);
 	}
+
+	public int getEffectiveRow() {
+		return row - 1;
+	}
+
+	public int getEffectiveColumn() {
+		return col - 1;
+	}
 	
 	
 

@@ -30,7 +30,7 @@ public class Board {
 	}
 
 	public boolean contains(Position position) {
-		return false;
+		return marks[position.getEffectiveRow()][position.getEffectiveColumn()] != Mark.NONE;
 	}
 
 	
