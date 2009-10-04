@@ -1,5 +1,9 @@
 package see.fa;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 
 public class TicTacToe {
 	
@@ -11,23 +15,19 @@ public class TicTacToe {
 
 	public Result move(Position position, Mark mark) {
 		board.set(position, mark);
+
+		Set<Line> lineResults = new HashSet<Line>();
+		lineResults.add(board.getRow(position));
+		lineResults.add(board.getCol(position));
+		lineResults.addAll(board.getDiags(position));
 		
-		Result rowResult = Result.valueOf(board.getRow(position));
-		if(rowResult != Result.GAME_NOT_FINISH) {
-			return rowResult;
+		Result result = Result.GAME_NOT_FINISH;
+		Iterator<Line> i = lineResults.iterator();
+		while(result == Result.GAME_NOT_FINISH && i.hasNext()) {
+			result = Result.valueOf(i.next()); 
 		}
 		
-		Result colResult = Result.valueOf(board.getCol(position));
-		if(colResult != Result.GAME_NOT_FINISH) {
-			return colResult;
-		}
-		
-		Result diagResult = Result.valueOf(board.getDiag(position));
-		if(diagResult != Result.GAME_NOT_FINISH) {
-			return diagResult;
-		}
-		
-		return Result.GAME_NOT_FINISH; 
+		return result; 
 	}
 
 	public Board getBoard() {
