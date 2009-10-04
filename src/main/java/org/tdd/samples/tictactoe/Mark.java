@@ -1,6 +1,6 @@
 package org.tdd.samples.tictactoe;
 
 public enum Mark {
-	X, NONE
+	X, NONE, O
 
 }
