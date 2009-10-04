@@ -146,7 +146,13 @@ public class TicTacToeTest extends TestSuite {
 		}
 		
 		public void test_ThenDoThrowGameOverException() {
+			MarkedPosition givenAnyValidMarkedPosition = new MarkedPosition(1, 1, nextMark);
 			
+			try {
+				ticTacToe.move(givenAnyValidMarkedPosition);
+			} catch (GameOverException gameOverException) {
+				fail("Should NOT have thrown " + gameOverException);
+			}
 		}
 		
 		public void testGivenMarkedPositionWhichMakesAHorizontalLine_ThenWin() {
