@@ -29,6 +29,11 @@ public class Board {
 		marks[markedPosition.getEffectiveRow()][markedPosition.getEffectiveColumn()] = markedPosition.getMark();
 	}
 
+	public boolean contains(Position position) {
+		return false;
+	}
+
+	
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !obj.getClass().isAssignableFrom(Board.class)) {
@@ -63,5 +68,4 @@ public class Board {
 			.append("}").toString();
 	}
 
-	
 }
