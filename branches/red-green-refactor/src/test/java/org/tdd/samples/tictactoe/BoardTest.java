@@ -8,10 +8,12 @@ public class BoardTest extends TestSuite {
 	
 	public static Test suite() {
 		TestSuite allTests = new TestSuite();
+		allTests.addTestSuite(WhenSet.class);
+		allTests.addTestSuite(WhenContains.class);
 		return allTests;
 	}
 	
-	public static class AbstractBoardTest extends TestCase {
+	public abstract static class AbstractBoardTest extends TestCase {
 		protected Board board;
 		
 		@Override
@@ -44,12 +46,37 @@ public class BoardTest extends TestSuite {
 	}
 	
 	public static class WhenContains extends AbstractBoardTest {
+		
+		@Override
+		protected void setUp() throws Exception {
+			super.setUp();
+			board = new Board(new Mark[][]{
+					{Mark.X, Mark.NONE, Mark.NONE}, 
+					{Mark.NONE, Mark.NONE, Mark.NONE}, 
+					{Mark.NONE, Mark.NONE, Mark.NONE}
+			});
+		}
+
 		public void testGivenPositionIsAlreadyOccupied_ThenReturnTrue() {
+			Position givenPositionThatIsAlreadyOccupied = new Position(1, 1);
 			
+			boolean actualContains = board.contains(givenPositionThatIsAlreadyOccupied);
+			
+			assertTrue(new StringBuilder()
+						.append("Should have been TRUE because board ").append(board)
+						.append(" already contains position ").append(givenPositionThatIsAlreadyOccupied)
+						.toString() , actualContains);
 		}
 		
 		public void testGivenPositionIsNotYetOccupied_ThenReturnFalse() {
+			Position givenPositionThatIsNotYetOccupied = new Position(1, 2);
 			
+			boolean actualContains = board.contains(givenPositionThatIsNotYetOccupied);
+			
+			assertFalse(new StringBuilder()
+						.append("Should have been FALSE because board ").append(board)
+						.append(" does not contain position ").append(givenPositionThatIsNotYetOccupied)
+						.toString() , actualContains);
 		}
 	}
 }
