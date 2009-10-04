@@ -29,7 +29,7 @@ public class Board {
 		marks[markedPosition.getPosition().getEffectiveRow()][markedPosition.getPosition().getEffectiveColumn()] = markedPosition.getMark();
 	}
 
-	public boolean contains(Position position) {
+	public boolean isMarked(Position position) {
 		return marks[position.getEffectiveRow()][position.getEffectiveColumn()] != Mark.NONE;
 	}
 

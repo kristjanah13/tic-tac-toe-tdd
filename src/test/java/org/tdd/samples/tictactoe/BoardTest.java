@@ -9,7 +9,7 @@ public class BoardTest extends TestSuite {
 	public static Test suite() {
 		TestSuite allTests = new TestSuite();
 		allTests.addTestSuite(WhenSet.class);
-		allTests.addTestSuite(WhenContains.class);
+		allTests.addTestSuite(WhenIsMarked.class);
 		return allTests;
 	}
 	
@@ -45,7 +45,7 @@ public class BoardTest extends TestSuite {
 		}
 	}
 	
-	public static class WhenContains extends AbstractBoardTest {
+	public static class WhenIsMarked extends AbstractBoardTest {
 		
 		@Override
 		protected void setUp() throws Exception {
@@ -60,7 +60,7 @@ public class BoardTest extends TestSuite {
 		public void testGivenPositionIsAlreadyOccupied_ThenReturnTrue() {
 			Position givenPositionThatIsAlreadyOccupied = new Position(1, 1);
 			
-			boolean actualContains = board.contains(givenPositionThatIsAlreadyOccupied);
+			boolean actualContains = board.isMarked(givenPositionThatIsAlreadyOccupied);
 			
 			assertTrue(new StringBuilder()
 						.append("Should have been TRUE because board ").append(board)
@@ -71,7 +71,7 @@ public class BoardTest extends TestSuite {
 		public void testGivenPositionIsNotYetOccupied_ThenReturnFalse() {
 			Position givenPositionThatIsNotYetOccupied = new Position(1, 2);
 			
-			boolean actualContains = board.contains(givenPositionThatIsNotYetOccupied);
+			boolean actualContains = board.isMarked(givenPositionThatIsNotYetOccupied);
 			
 			assertFalse(new StringBuilder()
 						.append("Should have been FALSE because board ").append(board)
