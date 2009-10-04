@@ -70,6 +70,28 @@ public class TicTacToeTest extends TestSuite {
 			}
 		}
 		
+		public void testGivenANonMarkMarkedPosition_WhenMove_ThenThrowIllegalMoveException() {
+			MarkedPosition givenNoneMarkMarkedPosition = new MarkedPosition(1, 1, Mark.NONE);
+			
+			try {
+				ticTacToe.move(givenNoneMarkMarkedPosition);
+				fail("Should not have thrown " + IllegalMoveException.class.getName());
+			} catch(IllegalMoveException illegalMoveException) {
+				// expected behaviour.
+			}
+		}
+		
+		public void testGivenANullMarkMarkedPosition_WhenMove_ThenThrowIllegalMoveException() {
+			MarkedPosition givenNullMarkMarkedPosition = new MarkedPosition(1, 1, null);
+			
+			try {
+				ticTacToe.move(givenNullMarkMarkedPosition);
+				fail("Should not have thrown " + IllegalMoveException.class.getName());
+			} catch(IllegalMoveException illegalMoveException) {
+				// expected behaviour.
+			}
+		}
+		
 		public void test_ThenDoThrowGameOverException() {
 			MarkedPosition givenAnyMarkedPosition = new MarkedPosition(1, 1, Mark.X);
 			
