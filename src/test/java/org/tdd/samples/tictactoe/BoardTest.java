@@ -31,4 +31,12 @@ public class BoardTest extends TestCase {
 				}), 
 				board);
 	}
+	
+	public void testGivenPositionIsAlreadyOccupied_WhenContains_ThenReturnTrue() {
+		
+	}
+	
+	public void testGivenPositionIsNoetOccupied_WhenContains_ThenReturnFalse() {
+		
+	}
 }
