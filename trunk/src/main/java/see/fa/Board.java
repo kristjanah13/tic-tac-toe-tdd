@@ -1,11 +1,27 @@
 package see.fa;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 
 public class Board {
 
+	private static final Set<List<Position>> POSITIONS_FOR_DIAGONAL_LINES;
+	
+	static {
+		List<Position> upperLeftToLowerRightLinePositions = Arrays.asList(new Position(1, 1), new Position(2, 2), new Position(3, 3));
+		List<Position> upperRightToLowerLeftLinePositions = Arrays.asList(new Position(1, 3), new Position(2, 2), new Position(3, 1));
+	
+		Set<List<Position>> diagonalLinePositions = new HashSet<List<Position>>();
+		diagonalLinePositions.add(upperLeftToLowerRightLinePositions);
+		diagonalLinePositions.add(upperRightToLowerLeftLinePositions);
+		POSITIONS_FOR_DIAGONAL_LINES = Collections.unmodifiableSet(diagonalLinePositions);
+	}
+	
 	private final Mark[][] marks;
 
 	public Board(Mark[][] marks) {
@@ -41,8 +57,18 @@ public class Board {
 		return new Line(lineMarks);
 	}
 
-	public Line getDiag(Position position) {
-		return null;
+	public Set<Line> getDiags(Position position) {
+		Set<Line> lines = new HashSet<Line>();
+		for(List<Position> positionsForDiagonalLine : POSITIONS_FOR_DIAGONAL_LINES) {
+			if(positionsForDiagonalLine.contains(position)) {
+				List<Mark> marksForLine = new LinkedList<Mark>();
+				for(Position positionInDiagonalLine : positionsForDiagonalLine) {
+					marksForLine.add(marks[positionInDiagonalLine.getX() - 1][positionInDiagonalLine.getY() - 1]);
+				}
+				lines.add(new Line(marksForLine));
+			}
+		}
+		return lines;
 	}
 
 	@Override
