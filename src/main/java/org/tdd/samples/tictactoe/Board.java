@@ -1,9 +1,17 @@
 package org.tdd.samples.tictactoe;
 
 public class Board {
+	
+	public Board() {
+		
+	}
 
 	public Board(Mark[][] marks) {
-		// TODO Auto-generated constructor stub
+	}
+
+	public void set(MarkedPosition markedPosition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
