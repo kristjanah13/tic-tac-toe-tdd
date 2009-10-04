@@ -26,7 +26,7 @@ public class Board {
 	}
 
 	public void set(MarkedPosition markedPosition) {
-		marks[markedPosition.getEffectiveRow()][markedPosition.getEffectiveColumn()] = markedPosition.getMark();
+		marks[markedPosition.getPosition().getEffectiveRow()][markedPosition.getPosition().getEffectiveColumn()] = markedPosition.getMark();
 	}
 
 	public boolean contains(Position position) {
