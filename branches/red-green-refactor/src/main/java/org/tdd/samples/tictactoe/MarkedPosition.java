@@ -24,4 +24,8 @@ public class MarkedPosition {
 		return mark;
 	}
 
+	public Position getPosition() {
+		return new Position(row, col);
+	}
+
 }
