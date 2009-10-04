@@ -9,6 +9,7 @@ public class BoardTest extends TestSuite {
 	public static Test suite() {
 		TestSuite allTests = new TestSuite();
 		allTests.addTestSuite(WhenSet.class);
+		allTests.addTestSuite(WhenContains.class);
 		allTests.addTestSuite(WhenIsMarked.class);
 		return allTests;
 	}
@@ -45,8 +46,7 @@ public class BoardTest extends TestSuite {
 		}
 	}
 	
-	public static class WhenIsMarked extends AbstractBoardTest {
-		
+	public abstract static class GivenNonEmptyBoard extends AbstractBoardTest {
 		@Override
 		protected void setUp() throws Exception {
 			super.setUp();
@@ -56,27 +56,54 @@ public class BoardTest extends TestSuite {
 					{Mark.NONE, Mark.NONE, Mark.NONE}
 			});
 		}
-
-		public void testGivenPositionIsAlreadyOccupied_ThenReturnTrue() {
-			Position givenPositionThatIsAlreadyOccupied = new Position(1, 1);
+	}
+	
+	public static class WhenContains extends GivenNonEmptyBoard {
+		public void testGivenPositionWithinTheBoard_ThenReturnTrue() {
+			Position givenPositionThatIsInsideTheBoard = new Position(3, 3);
 			
-			boolean actualContains = board.isMarked(givenPositionThatIsAlreadyOccupied);
+			boolean actualContains = board.contains(givenPositionThatIsInsideTheBoard);
 			
 			assertTrue(new StringBuilder()
 						.append("Should have been TRUE because board ").append(board)
-						.append(" already contains position ").append(givenPositionThatIsAlreadyOccupied)
+						.append(" contains position ").append(givenPositionThatIsInsideTheBoard)
 						.toString() , actualContains);
+		}
+		
+		public void testGivenPositionOutsideTheBoard_ThenReturnTrue() {
+			Position givenPositionThatIsOutsideTheBoard = new Position(4, 4);
+			
+			boolean actualContains = board.contains(givenPositionThatIsOutsideTheBoard);
+			
+			assertFalse(new StringBuilder()
+						.append("Should have been FALSE because board ").append(board)
+						.append(" does not contain position ").append(givenPositionThatIsOutsideTheBoard)
+						.toString() , actualContains);
+		}
+	}
+	
+	public static class WhenIsMarked extends GivenNonEmptyBoard {
+		
+		public void testGivenPositionIsAlreadyOccupied_ThenReturnTrue() {
+			Position givenPositionThatIsAlreadyOccupied = new Position(1, 1);
+			
+			boolean actualMarked = board.isMarked(givenPositionThatIsAlreadyOccupied);
+			
+			assertTrue(new StringBuilder()
+						.append("Should have been TRUE because board ").append(board)
+						.append(" is already marked at position ").append(givenPositionThatIsAlreadyOccupied)
+						.toString() , actualMarked);
 		}
 		
 		public void testGivenPositionIsNotYetOccupied_ThenReturnFalse() {
 			Position givenPositionThatIsNotYetOccupied = new Position(1, 2);
 			
-			boolean actualContains = board.isMarked(givenPositionThatIsNotYetOccupied);
+			boolean actualMarked = board.isMarked(givenPositionThatIsNotYetOccupied);
 			
 			assertFalse(new StringBuilder()
 						.append("Should have been FALSE because board ").append(board)
-						.append(" does not contain position ").append(givenPositionThatIsNotYetOccupied)
-						.toString() , actualContains);
+						.append(" is NOT yet marked at position ").append(givenPositionThatIsNotYetOccupied)
+						.toString() , actualMarked);
 		}
 	}
 }
