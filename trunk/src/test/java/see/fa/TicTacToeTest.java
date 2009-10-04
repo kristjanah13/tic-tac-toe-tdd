@@ -66,6 +66,12 @@ public class TicTacToeTest extends TestCase {
 	}
 	
 	public void testGivenPosition_AndMark_AndNoSameMarksOnAnyStraightLine_WhenMove_ThenContinueGame() {
+		Mark givenSameMark = Mark.X;
 		
+		ticTacToe.move(new Position(1, 1), givenSameMark);
+		ticTacToe.move(new Position(2, 3), givenSameMark);
+		Result result = ticTacToe.move(new Position(3, 2), givenSameMark);
+		
+		assertEquals("Should have won the game for X.", Result.GAME_NOT_FINISH, result);
 	}
 }
