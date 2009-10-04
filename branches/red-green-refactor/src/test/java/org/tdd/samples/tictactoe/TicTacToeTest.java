@@ -34,11 +34,29 @@ public class TicTacToeTest extends TestSuite {
 	
 	public static class GivenNewGame_WhenMove extends AbstractTicTacToeTest {
 		public void testGivenAMarkedPosition_ThenMarkPositionOnBoard() {
+			MarkedPosition givenMarkedPosition = new MarkedPosition(1, 1, Mark.X);
 			
+			ticTacToe.move(givenMarkedPosition);
+			
+			Board board = ticTacToe.getBoard();
+			assertEquals("Should have marked board.",
+					new Board(new Mark[][]{
+							{Mark.X, Mark.NONE, Mark.NONE},
+							{Mark.NONE, Mark.NONE, Mark.NONE},
+							{Mark.NONE, Mark.NONE, Mark.NONE}
+					}), 
+					board
+			);
 		}
 		
 		public void test_ThenDoThrowGameOverException() {
+			MarkedPosition givenAnyMarkedPosition = new MarkedPosition(1, 1, Mark.X);
 			
+			try {
+				ticTacToe.move(givenAnyMarkedPosition);
+			} catch(GameOverException e) {
+				fail("Should not have thrown a " + e.getClass().getName() + "  when ");
+			}
 		}
 	}
 	
