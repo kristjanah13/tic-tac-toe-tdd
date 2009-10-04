@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class TicTacToeTest extends TestCase {
 
-	private TicTacToe ticTacToe
+	private TicTacToe ticTacToe;
 
 	@Override
 	protected void setUp() throws Exception {
