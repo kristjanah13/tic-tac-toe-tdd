@@ -49,6 +49,27 @@ public class TicTacToeTest extends TestSuite {
 			);
 		}
 		
+		public void testGivenAMarkedPositionIsWithinTheBoard_WhenMove_ThenDoNotThrowIllegalMoveException() {
+			MarkedPosition givenMarkedPositionWithinTheBoard = new MarkedPosition(3, 3, Mark.X);
+			
+			try {
+				ticTacToe.move(givenMarkedPositionWithinTheBoard);
+			} catch(IllegalMoveException illegalMoveException) {
+				fail("Should not have thrown " + illegalMoveException);
+			}
+		}
+
+		public void testGivenAMarkedPositionIsOutsideTheBoard_WhenMove_ThenThrowIllegalMoveException() {
+			MarkedPosition givenMarkedPositionOutisdeTheBoard = new MarkedPosition(4, 4, Mark.X);
+			
+			try {
+				ticTacToe.move(givenMarkedPositionOutisdeTheBoard);
+				fail("Should not have thrown " + IllegalMoveException.class.getName());
+			} catch(IllegalMoveException illegalMoveException) {
+				// expected behaviour.
+			}
+		}
+		
 		public void test_ThenDoThrowGameOverException() {
 			MarkedPosition givenAnyMarkedPosition = new MarkedPosition(1, 1, Mark.X);
 			
@@ -100,10 +121,6 @@ public class TicTacToeTest extends TestSuite {
 			} catch (IllegalMoveException illegalMoveException) {
 				
 			}
-		}
-		
-		public void testGivenAMarkedPositionWithinTheBoard_WhenMove_ThenDoNotThrowIllegalMoveException() {
-			
 		}
 		
 		public void test_ThenDoThrowGameOverException() {
