@@ -28,7 +28,7 @@ public class TicTacToe {
 		
 		board.set(markedPosition);
 		
-		return null;
+		return Result.X_WINS;
 	}
 
 	public Board getBoard() {
