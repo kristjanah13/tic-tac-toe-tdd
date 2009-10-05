@@ -8,7 +8,7 @@ public class TicTacToe {
 		board = new Board();
 	}
 
-	public void move(MarkedPosition markedPosition) {
+	public Result move(MarkedPosition markedPosition) {
 		if(markedPosition.getMark() != Mark.X && markedPosition.getMark() != Mark.O ) {
 			throw new IllegalMoveException(new StringBuilder()
 				.append(markedPosition.getMark())
@@ -27,6 +27,8 @@ public class TicTacToe {
 		}
 		
 		board.set(markedPosition);
+		
+		return null;
 	}
 
 	public Board getBoard() {
