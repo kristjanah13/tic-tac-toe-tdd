@@ -8,7 +8,7 @@ public class TicTacToeTest extends TestSuite {
 	
 	public static Test suite() {
 		TestSuite allTests = new TestSuite();
-		allTests.addTestSuite(GivenNewGame_WhenMove.class);
+		allTests.addTestSuite(GivenAnUnfinishedGame_WhenMove.class);
 		allTests.addTestSuite(GivenRunningGame_WhenMove.class);
 		allTests.addTestSuite(GivenRunningGame_AndLastMoveIsXMark_WhenMove.class);
 		allTests.addTestSuite(GivenRunningGame_AndLastMoveIsOMark_WhenMove.class);
@@ -32,7 +32,7 @@ public class TicTacToeTest extends TestSuite {
 		}		
 	}
 	
-	public static class GivenNewGame_WhenMove extends AbstractTicTacToeTest {
+	public static class GivenAnUnfinishedGame_WhenMove extends AbstractTicTacToeTest {
 		public void testGivenAMarkedPosition_ThenMarkPositionOnBoard() {
 			MarkedPosition givenMarkedPosition = new MarkedPosition(1, 1, Mark.X);
 			
@@ -70,7 +70,7 @@ public class TicTacToeTest extends TestSuite {
 			}
 		}
 		
-		public void testGivenANonMarkMarkedPosition_WhenMove_ThenThrowIllegalMoveException() {
+		public void testGivenANoneMarkMarkedPosition_WhenMove_ThenThrowIllegalMoveException() {
 			MarkedPosition givenNoneMarkMarkedPosition = new MarkedPosition(1, 1, Mark.NONE);
 			
 			try {
@@ -92,7 +92,7 @@ public class TicTacToeTest extends TestSuite {
 			}
 		}
 		
-		public void test_ThenDoThrowGameOverException() {
+		public void test_ThenDoNotThrowGameOverException() {
 			MarkedPosition givenAnyMarkedPosition = new MarkedPosition(1, 1, Mark.X);
 			
 			try {
@@ -142,16 +142,6 @@ public class TicTacToeTest extends TestSuite {
 				fail("Should have thrown an " + IllegalMoveException.class.getName());
 			} catch (IllegalMoveException illegalMoveException) {
 				
-			}
-		}
-		
-		public void test_ThenDoThrowGameOverException() {
-			MarkedPosition givenAnyValidMarkedPosition = new MarkedPosition(1, 1, nextMark);
-			
-			try {
-				ticTacToe.move(givenAnyValidMarkedPosition);
-			} catch (GameOverException gameOverException) {
-				fail("Should NOT have thrown " + gameOverException);
 			}
 		}
 		
