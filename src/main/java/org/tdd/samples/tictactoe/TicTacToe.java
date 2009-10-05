@@ -28,7 +28,15 @@ public class TicTacToe {
 		
 		board.set(markedPosition);
 		
-		return Result.X_WINS;
+		Line line = board.getRow(markedPosition.getPosition());
+		Result result;
+		if(line.areAllTheSame()) {
+			result = markedPosition.getMark() == Mark.X ? Result.X_WINS : Result.O_WINS;
+		} else {
+			result = Result.GAME_IS_ONGOING;
+		}
+		
+		return result;
 	}
 
 	public Board getBoard() {
