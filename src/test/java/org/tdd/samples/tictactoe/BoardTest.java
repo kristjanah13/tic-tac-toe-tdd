@@ -11,6 +11,7 @@ public class BoardTest extends TestSuite {
 		allTests.addTestSuite(WhenSet.class);
 		allTests.addTestSuite(WhenContains.class);
 		allTests.addTestSuite(WhenIsMarked.class);
+		allTests.addTestSuite(WhenGetRow.class);
 		return allTests;
 	}
 	
@@ -104,6 +105,16 @@ public class BoardTest extends TestSuite {
 						.append("Should have been FALSE because board ").append(board)
 						.append(" is NOT yet marked at position ").append(givenPositionThatIsNotYetOccupied)
 						.toString() , actualMarked);
+		}
+	}
+	
+	public static class WhenGetRow extends GivenNonEmptyBoard {
+		
+		public void testShouldReturnMarksInTheBoardWithTheSameRow() {
+			Line row = board.getRow(new Position(2, 3));
+			
+			assertEquals("Should have returned the marks with all the rows equal to 2.", 
+					new Line(new Position[]{new Position(1, 2), new Position(2, 2), new Position(2, 3)}), row);
 		}
 	}
 }
