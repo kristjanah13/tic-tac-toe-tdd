@@ -13,7 +13,22 @@ public class Line {
 	}
 
 	public boolean isStraight() {
-		return false;
+		return isHorizontal();
+	}
+
+	private boolean isHorizontal() {
+		boolean horizontal = true;
+		Integer rowPosition = null;
+		int i = 0;
+		while(i < positions.length) {
+			if(rowPosition == null) {
+				rowPosition = positions[i].getEffectiveRow();
+			} else {
+				horizontal = rowPosition.equals(positions[i].getEffectiveRow());
+			}
+			i++;
+		}
+		return horizontal;
 	}
 
 	@Override
