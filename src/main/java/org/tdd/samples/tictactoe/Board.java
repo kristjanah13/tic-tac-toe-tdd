@@ -47,6 +47,10 @@ public class Board {
 		return new Line(positions);
 	}
 
+	public Line getColumn(Position position) {
+		return null;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !obj.getClass().isAssignableFrom(Board.class)) {
