@@ -31,6 +31,13 @@ public class LineTest extends TestSuite {
 			
 			assertTrue("Horizontal line should be straight.", straight);
 		}
+		public void testGivenVerticalLine_ThenReturnTrue() {
+			Line verticalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withDifferentRowsAndSameColumn(new int[]{1,2,3}, 1).buildArray());
+			
+			boolean straight = verticalLine.isStraight();
+			
+			assertTrue("Vertical line should be straight.", straight);
+		}
 	}
 	
 	public static class WhenIsMarkedTheSame extends TestCase {
