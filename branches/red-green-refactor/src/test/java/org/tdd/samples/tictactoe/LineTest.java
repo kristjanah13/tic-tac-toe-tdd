@@ -1,10 +1,5 @@
 package org.tdd.samples.tictactoe;
 
-import org.tdd.samples.tictactoe.BoardTest.WhenContains;
-import org.tdd.samples.tictactoe.BoardTest.WhenGetRow;
-import org.tdd.samples.tictactoe.BoardTest.WhenIsMarked;
-import org.tdd.samples.tictactoe.BoardTest.WhenSet;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
