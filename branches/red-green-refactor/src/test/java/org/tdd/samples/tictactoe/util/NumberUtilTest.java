@@ -27,7 +27,7 @@ public class NumberUtilTest extends TestSuite {
 		}
 
 		public void testGivenNumbersAreDecreasing_ThenDescending() {
-			List<? extends Number> decreasingNumbers = Arrays.asList(1,2,3);
+			List<? extends Number> decreasingNumbers = Arrays.asList(3,2,1);
 			
 			Order order = NumberUtil.getOrder(decreasingNumbers);
 			
