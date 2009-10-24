@@ -114,7 +114,7 @@ public class BoardTest extends TestSuite {
 			Line row = board.getRow(new Position(2, 3));
 			
 			assertEquals("Should have returned the marks with all the rows equal to 2.", 
-					new Line(new Position[]{new Position(2, 1), new Position(2, 2), new Position(2, 3)}), row);
+					new Line(new MarkedPosition[]{new MarkedPosition(2, 1, Mark.NONE), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(2, 3, Mark.NONE)}), row);
 		}
 	}
 }

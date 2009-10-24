@@ -40,9 +40,9 @@ public class Board {
 	
 	public Line getRow(Position position) {
 		int effectiveRow = position.getEffectiveRow();
-		Position[] positions = new Position[3];
+		MarkedPosition[] positions = new MarkedPosition[3];
 		for(int i = 0; i < positions.length; i++) {
-			positions[i] = new Position(effectiveRow+1, i+1);
+			positions[i] = new MarkedPosition(effectiveRow+1, i+1, marks[effectiveRow][i]);
 		}
 		return new Line(positions);
 	}
