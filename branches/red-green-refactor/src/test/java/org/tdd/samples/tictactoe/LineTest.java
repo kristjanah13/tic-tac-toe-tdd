@@ -17,7 +17,7 @@ public class LineTest extends TestSuite {
 	
 	public static class WhenIsStraight extends TestCase {
 		public void testGivenNonHorizontalVerticalOrDiagonalLine_ThenReturnFalse() {
-			Line nonHorizontalVerticalDiagonalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withRowsAndColumns(new int[][]{{1,1},{1,2},{3,3}}).buildArray());
+			Line nonHorizontalVerticalDiagonalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withRowsAndColumns(new int[][]{{1,1},{1,1},{3,3}}).buildArray());
 			
 			boolean straight = nonHorizontalVerticalDiagonalLine.isStraight();
 			
