@@ -158,7 +158,15 @@ public class TicTacToeTest extends TestSuite {
 		}
 		
 		public void testGivenMarkedPositionWhichMakesAVerticalLine_ThenWin() {
+			SETUP_TWO_VERTICAL_MARKS : { 
+				ticTacToe.move(new MarkedPosition(1, 1, Mark.O));
+				ticTacToe.move(new MarkedPosition(1, 2, Mark.X));
+				ticTacToe.move(new MarkedPosition(3, 1, Mark.O));
+			}
 			
+			Result result = ticTacToe.move(new MarkedPosition(1, 3, Mark.X));
+			
+			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
 		
 		public void testGivenMarkedPositionWhichMakesAnUpperLeftToLowerRightDiagonalLine_ThenWin() {
