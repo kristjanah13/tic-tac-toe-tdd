@@ -172,7 +172,7 @@ public class TicTacToeTest extends TestSuite {
 		public void testGivenMarkedPositionWhichMakesNoStraightLine_ThenContinueGame() {
 			Result result = ticTacToe.move(new MarkedPosition(2, 3, nextMark));
 			
-			assertEquals("X Should have won.", Result.GAME_IS_ONGOING, result);
+			assertEquals("Should have been on-going.", Result.GAME_IS_ONGOING, result);
 		}
 	}
 

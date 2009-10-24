@@ -6,9 +6,9 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 public class Line {
 
-	private final Position[] positions;
+	private final MarkedPosition[] positions;
 
-	public Line(Position[] positions) {
+	public Line(MarkedPosition[] positions) {
 		this.positions = positions;
 	}
 
@@ -22,9 +22,9 @@ public class Line {
 		int i = 0;
 		while(i < positions.length) {
 			if(rowPosition == null) {
-				rowPosition = positions[i].getEffectiveRow();
+				rowPosition = positions[i].getPosition().getEffectiveRow();
 			} else {
-				horizontal = rowPosition.equals(positions[i].getEffectiveRow());
+				horizontal = rowPosition.equals(positions[i].getPosition().getEffectiveRow());
 			}
 			i++;
 		}
