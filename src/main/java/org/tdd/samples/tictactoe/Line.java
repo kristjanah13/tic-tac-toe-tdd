@@ -13,7 +13,7 @@ public class Line {
 	}
 
 	public boolean isStraight() {
-		return isHorizontal();
+		return isHorizontal() || isVertical();
 	}
 
 	private boolean isHorizontal() {
@@ -29,6 +29,21 @@ public class Line {
 			i++;
 		}
 		return horizontal;
+	}
+	
+	private boolean isVertical() {
+		boolean vertical = true;
+		Integer colPosition = null;
+		int i = 0;
+		while(i < positions.length) {
+			if(colPosition == null) {
+				colPosition = positions[i].getPosition().getEffectiveColumn();
+			} else {
+				vertical = colPosition.equals(positions[i].getPosition().getEffectiveColumn());
+			}
+			i++;
+		}
+		return vertical;
 	}
 
 	public boolean isMarkedTheSame() {
