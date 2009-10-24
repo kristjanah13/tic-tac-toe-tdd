@@ -26,7 +26,7 @@ public class Line {
 		boolean horizontal = true;
 		Integer rowPosition = null;
 		int i = 0;
-		while(i < positions.length) {
+		while(horizontal && i < positions.length) {
 			if(rowPosition == null) {
 				rowPosition = positions[i].getPosition().getEffectiveRow();
 			} else {
@@ -41,7 +41,7 @@ public class Line {
 		boolean vertical = true;
 		Integer colPosition = null;
 		int i = 0;
-		while(i < positions.length) {
+		while(vertical && i < positions.length) {
 			if(colPosition == null) {
 				colPosition = positions[i].getPosition().getEffectiveColumn();
 			} else {
@@ -68,7 +68,7 @@ public class Line {
 		boolean markedTheSame = true;
 		Mark mark = null;
 		int i = 0;
-		while(i < positions.length) {
+		while(markedTheSame && i < positions.length) {
 			if(mark == null) {
 				mark = positions[i].getMark();
 			} else {
