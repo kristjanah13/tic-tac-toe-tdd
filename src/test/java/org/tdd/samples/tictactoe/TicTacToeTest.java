@@ -161,10 +161,10 @@ public class TicTacToeTest extends TestSuite {
 			SETUP_TWO_VERTICAL_MARKS : { 
 				ticTacToe.move(new MarkedPosition(1, 1, Mark.O));
 				ticTacToe.move(new MarkedPosition(1, 2, Mark.X));
-				ticTacToe.move(new MarkedPosition(3, 1, Mark.O));
+				ticTacToe.move(new MarkedPosition(1, 3, Mark.O));
 			}
 			
-			Result result = ticTacToe.move(new MarkedPosition(1, 3, Mark.X));
+			Result result = ticTacToe.move(new MarkedPosition(3, 2, Mark.X));
 			
 			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
