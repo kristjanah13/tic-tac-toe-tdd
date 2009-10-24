@@ -32,7 +32,18 @@ public class Line {
 	}
 
 	public boolean isMarkedTheSame() {
-		return false;
+		boolean markedTheSame = true;
+		Mark mark = null;
+		int i = 0;
+		while(i < positions.length) {
+			if(mark == null) {
+				mark = positions[i].getMark();
+			} else {
+				markedTheSame = mark.equals(positions[i].getMark());
+			}
+			i++;
+		}
+		return markedTheSame;
 	}
 	
 	@Override
