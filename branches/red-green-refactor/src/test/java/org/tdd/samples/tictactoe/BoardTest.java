@@ -12,6 +12,7 @@ public class BoardTest extends TestSuite {
 		allTests.addTestSuite(WhenContains.class);
 		allTests.addTestSuite(WhenIsMarked.class);
 		allTests.addTestSuite(WhenGetRow.class);
+		allTests.addTestSuite(WhenGetColumn.class);
 		return allTests;
 	}
 	
@@ -115,6 +116,16 @@ public class BoardTest extends TestSuite {
 			
 			assertEquals("Should have returned the marks with all the rows equal to 2.", 
 					new Line(new MarkedPosition[]{new MarkedPosition(2, 1, Mark.NONE), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(2, 3, Mark.NONE)}), row);
+		}
+	}
+	
+	public static class WhenGetColumn extends GivenNonEmptyBoard {
+		
+		public void testShouldReturnMarksInTheBoardWithTheSameColumn() {
+			Line row = board.getColumn(new Position(2, 3));
+			
+			assertEquals("Should have returned the marks with all the columns equal to 3.", 
+					new Line(new MarkedPosition[]{new MarkedPosition(1, 3, Mark.NONE), new MarkedPosition(2, 3, Mark.NONE), new MarkedPosition(3, 3, Mark.NONE)}), row);
 		}
 	}
 }
