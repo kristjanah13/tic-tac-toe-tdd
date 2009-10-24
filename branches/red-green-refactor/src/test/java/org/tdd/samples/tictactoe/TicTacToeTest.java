@@ -185,7 +185,7 @@ public class TicTacToeTest extends TestSuite {
 			SETUP_DIAGONAL_LINE_FROM_UPPER_RIGHT_TO_LOWER_LEFT : { 
 				ticTacToe.move(new MarkedPosition(1, 2, Mark.O));
 				ticTacToe.move(new MarkedPosition(1, 3, Mark.X));
-				ticTacToe.move(new MarkedPosition(1, 3, Mark.O));
+				ticTacToe.move(new MarkedPosition(3, 3, Mark.O));
 			}
 			
 			Result result = ticTacToe.move(new MarkedPosition(3, 1, Mark.X));
