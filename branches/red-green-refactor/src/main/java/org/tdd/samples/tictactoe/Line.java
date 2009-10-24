@@ -31,6 +31,10 @@ public class Line {
 		return horizontal;
 	}
 
+	public boolean isMarkedTheSame() {
+		return false;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !Line.class.isAssignableFrom(obj.getClass())) {
@@ -54,5 +58,5 @@ public class Line {
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this);
 	}
-	
+
 }
