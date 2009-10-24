@@ -42,7 +42,7 @@ public class Board {
 		int effectiveRow = position.getEffectiveRow();
 		Position[] positions = new Position[3];
 		for(int i = 0; i < positions.length; i++) {
-			positions[i] = new Position(effectiveRow+1, i);
+			positions[i] = new Position(effectiveRow+1, i+1);
 		}
 		return new Line(positions);
 	}
