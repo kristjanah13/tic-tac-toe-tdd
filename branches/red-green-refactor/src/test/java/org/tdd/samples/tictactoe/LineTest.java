@@ -17,6 +17,6 @@ public class LineTest extends TestCase {
 		
 		boolean straight = horizontalLine.isStraight();
 		
-		assertFalse("Horizontal line should not be straight.", straight);
+		assertTrue("Horizontal line should be straight.", straight);
 	}
 }
