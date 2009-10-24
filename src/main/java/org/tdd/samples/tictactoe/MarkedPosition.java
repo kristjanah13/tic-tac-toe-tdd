@@ -1,8 +1,9 @@
 package org.tdd.samples.tictactoe;
 
+import org.apache.commons.lang.builder.CompareToBuilder;
 import org.apache.commons.lang.builder.EqualsBuilder;
 
-public class MarkedPosition {
+public class MarkedPosition implements Comparable<MarkedPosition> {
 
 	private final Position position;
 	private final Mark mark;
@@ -44,7 +45,12 @@ public class MarkedPosition {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-	
-	
+
+	public int compareTo(MarkedPosition that) {
+		return new CompareToBuilder()
+			.append(this.getPosition().getEffectiveRow(), that.getPosition().getEffectiveRow())
+			.append(this.getPosition().getEffectiveColumn(), that.getPosition().getEffectiveColumn())
+		    .toComparison();
+	}
 
 }
