@@ -1,11 +1,24 @@
 package org.tdd.samples.tictactoe;
 
+import org.tdd.samples.tictactoe.BoardTest.WhenContains;
+import org.tdd.samples.tictactoe.BoardTest.WhenGetRow;
+import org.tdd.samples.tictactoe.BoardTest.WhenIsMarked;
+import org.tdd.samples.tictactoe.BoardTest.WhenSet;
+
+import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class LineTest extends TestSuite {
 	
-	public class WhenIsStraight extends TestCase {
+	public static Test suite() {
+		TestSuite allTests = new TestSuite();
+		allTests.addTestSuite(WhenIsStraight.class);
+		allTests.addTestSuite(WhenIsMarkedTheSame.class);
+		return allTests;
+	}
+	
+	public static class WhenIsStraight extends TestCase {
 		public void testGivenNonHorizontalVerticalOrDiagonalLine_ThenReturnFalse() {
 			Mark dummyMark = Mark.NONE;
 			Line nonHorizontalVerticalDiagonalLine = new Line(new MarkedPosition[]{new MarkedPosition(1,1,dummyMark), new MarkedPosition(1,2,dummyMark), new MarkedPosition(3,3,dummyMark)});
@@ -25,7 +38,7 @@ public class LineTest extends TestSuite {
 		}
 	}
 	
-	public class WhenIsMarkedTheSame extends TestCase {
+	public static class WhenIsMarkedTheSame extends TestCase {
 		public void testGivenAllXMarks_ThenTrue() {
 			int dummyRow = 1;
 			int dummyCol = 1;
