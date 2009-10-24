@@ -12,7 +12,7 @@ public class Line {
 		this.positions = positions;
 	}
 
-	public boolean areAllTheSame() {
+	public boolean isStraight() {
 		return false;
 	}
 

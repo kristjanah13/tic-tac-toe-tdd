@@ -30,7 +30,7 @@ public class TicTacToe {
 		
 		Line line = board.getRow(markedPosition.getPosition());
 		Result result;
-		if(line.areAllTheSame()) {
+		if(line.isStraight()) {
 			result = markedPosition.getMark() == Mark.X ? Result.X_WINS : Result.O_WINS;
 		} else {
 			result = Result.GAME_IS_ONGOING;
