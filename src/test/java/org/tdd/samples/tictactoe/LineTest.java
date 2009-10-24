@@ -31,10 +31,27 @@ public class LineTest extends TestSuite {
 			
 			assertTrue("Horizontal line should be straight.", straight);
 		}
+		
 		public void testGivenVerticalLine_ThenReturnTrue() {
 			Line verticalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withDifferentRowsAndSameColumn(new int[]{1,2,3}, 1).buildArray());
 			
 			boolean straight = verticalLine.isStraight();
+			
+			assertTrue("Vertical line should be straight.", straight);
+		}
+		
+		public void testGivenUpperLeftToLowerRightLine_ThenReturnTrue() {
+			Line diagonalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withRowsAndColumns(new int[][]{{1,1},{2,2},{3,3}}).buildArray());
+			
+			boolean straight = diagonalLine.isStraight();
+			
+			assertTrue("Vertical line should be straight.", straight);
+		}
+		
+		public void testGivenUpperRightToLowerLeftLine_ThenReturnTrue() {
+			Line diagonalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withRowsAndColumns(new int[][]{{1,3},{2,2},{3,1}}).buildArray());
+			
+			boolean straight = diagonalLine.isStraight();
 			
 			assertTrue("Vertical line should be straight.", straight);
 		}
