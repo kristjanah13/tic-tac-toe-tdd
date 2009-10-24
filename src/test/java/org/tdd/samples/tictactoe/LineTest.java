@@ -4,6 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.tdd.samples.tictactoe.test.MarkedPositionTestFixtureBuilder;
+
 public class LineTest extends TestSuite {
 	
 	public static Test suite() {
@@ -15,8 +17,7 @@ public class LineTest extends TestSuite {
 	
 	public static class WhenIsStraight extends TestCase {
 		public void testGivenNonHorizontalVerticalOrDiagonalLine_ThenReturnFalse() {
-			Mark dummyMark = Mark.NONE;
-			Line nonHorizontalVerticalDiagonalLine = new Line(new MarkedPosition[]{new MarkedPosition(1,1,dummyMark), new MarkedPosition(1,2,dummyMark), new MarkedPosition(3,3,dummyMark)});
+			Line nonHorizontalVerticalDiagonalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withRowsAndColumns(new int[][]{{1,1},{1,2},{3,3}}).buildArray());
 			
 			boolean straight = nonHorizontalVerticalDiagonalLine.isStraight();
 			
@@ -24,8 +25,7 @@ public class LineTest extends TestSuite {
 		}
 
 		public void testGivenHorizontalLine_ThenReturnTrue() {
-			Mark dummyMark = Mark.NONE;
-			Line horizontalLine = new Line(new MarkedPosition[]{new MarkedPosition(1,1,dummyMark), new MarkedPosition(1,2,dummyMark), new MarkedPosition(1,3,dummyMark)});
+			Line horizontalLine = new Line(new MarkedPositionTestFixtureBuilder(3).withSameRowDifferentColumns(1, new int[]{1,2,3}).buildArray());
 			
 			boolean straight = horizontalLine.isStraight();
 			
@@ -35,9 +35,7 @@ public class LineTest extends TestSuite {
 	
 	public static class WhenIsMarkedTheSame extends TestCase {
 		public void testGivenAllXMarks_ThenTrue() {
-			int dummyRow = 1;
-			int dummyCol = 1;
-			Line allXMarks = new Line(new MarkedPosition[]{new MarkedPosition(dummyRow,dummyCol,Mark.X), new MarkedPosition(dummyRow,dummyCol,Mark.X), new MarkedPosition(dummyRow,dummyCol,Mark.X)});
+			Line allXMarks = new Line(new MarkedPositionTestFixtureBuilder(3).withMark(Mark.X).buildArray());
 			
 			boolean markedTheSame = allXMarks.isMarkedTheSame();
 			
@@ -45,9 +43,7 @@ public class LineTest extends TestSuite {
 		}
 		
 		public void testGivenAllOMarks_ThenTrue() {
-			int dummyRow = 1;
-			int dummyCol = 1;
-			Line allOMarks = new Line(new MarkedPosition[]{new MarkedPosition(dummyRow,dummyCol,Mark.O), new MarkedPosition(dummyRow,dummyCol,Mark.O), new MarkedPosition(dummyRow,dummyCol,Mark.O)});
+			Line allOMarks = new Line(new MarkedPositionTestFixtureBuilder(3).withMark(Mark.O).buildArray());
 			
 			boolean markedTheSame = allOMarks.isMarkedTheSame();
 			
@@ -55,9 +51,7 @@ public class LineTest extends TestSuite {
 		}
 		
 		public void testGivenNoMarks_ThenTrue() {
-			int dummyRow = 1;
-			int dummyCol = 1;
-			Line noMarks = new Line(new MarkedPosition[]{new MarkedPosition(dummyRow,dummyCol,Mark.NONE), new MarkedPosition(dummyRow,dummyCol,Mark.NONE), new MarkedPosition(dummyRow,dummyCol,Mark.NONE)});
+			Line noMarks = new Line(new MarkedPositionTestFixtureBuilder(3).withMark(Mark.NONE).buildArray());
 			
 			boolean markedTheSame = noMarks.isMarkedTheSame();
 			
@@ -65,9 +59,7 @@ public class LineTest extends TestSuite {
 		}
 		
 		public void testGivenDifferentMarks_ThenFalse() {
-			int dummyRow = 1;
-			int dummyCol = 1;
-			Line differentMarks = new Line(new MarkedPosition[]{new MarkedPosition(dummyRow,dummyCol,Mark.X), new MarkedPosition(dummyRow,dummyCol,Mark.O), new MarkedPosition(dummyRow,dummyCol,Mark.NONE)});
+			Line differentMarks = new Line(new MarkedPositionTestFixtureBuilder(3).withMarks(Mark.NONE, Mark.O, Mark.X).buildArray());
 			
 			boolean markedTheSame = differentMarks.isMarkedTheSame();
 			
