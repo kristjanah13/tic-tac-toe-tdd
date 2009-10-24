@@ -1,8 +1,14 @@
 package org.tdd.samples.tictactoe;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.tdd.samples.tictactoe.util.NumberUtil;
 
 public class Line {
 
@@ -13,7 +19,7 @@ public class Line {
 	}
 
 	public boolean isStraight() {
-		return isHorizontal() || isVertical();
+		return isHorizontal() || isVertical() || isDiagonal();
 	}
 
 	private boolean isHorizontal() {
@@ -44,6 +50,18 @@ public class Line {
 			i++;
 		}
 		return vertical;
+	}
+	
+	private boolean isDiagonal() {
+		List<MarkedPosition> markedPositionList = Arrays.asList(positions);
+		Collections.sort(markedPositionList);
+		
+		List<Integer> columns = new LinkedList<Integer>();
+		for(MarkedPosition position : markedPositionList) {
+			columns.add(position.getPosition().getEffectiveColumn());
+		}
+		
+		return NumberUtil.getOrder(columns) != null;
 	}
 
 	public boolean isMarkedTheSame() {
