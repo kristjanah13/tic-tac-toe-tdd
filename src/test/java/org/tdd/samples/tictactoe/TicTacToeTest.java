@@ -170,11 +170,27 @@ public class TicTacToeTest extends TestSuite {
 		}
 		
 		public void testGivenMarkedPositionWhichMakesAnUpperLeftToLowerRightDiagonalLine_ThenWin() {
+			SETUP_DIAGONAL_LINE_FROM_UPPER_LEFT_TO_LOWER_RIGHT : { 
+				ticTacToe.move(new MarkedPosition(1, 2, Mark.O));
+				ticTacToe.move(new MarkedPosition(1, 1, Mark.X));
+				ticTacToe.move(new MarkedPosition(1, 3, Mark.O));
+			}
 			
+			Result result = ticTacToe.move(new MarkedPosition(3, 3, Mark.X));
+			
+			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
 		
 		public void testGivenMarkedPositionWhichMakesAnUpperRightToLowerLeftDiagonalLine_ThenWin() {
+			SETUP_DIAGONAL_LINE_FROM_UPPER_RIGHT_TO_LOWER_LEFT : { 
+				ticTacToe.move(new MarkedPosition(1, 2, Mark.O));
+				ticTacToe.move(new MarkedPosition(1, 3, Mark.X));
+				ticTacToe.move(new MarkedPosition(1, 3, Mark.O));
+			}
 			
+			Result result = ticTacToe.move(new MarkedPosition(3, 1, Mark.X));
+			
+			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
 		
 		public void testGivenMarkedPositionWhichMakesNoStraightLine_ThenContinueGame() {
