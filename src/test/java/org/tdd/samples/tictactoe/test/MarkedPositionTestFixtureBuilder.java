@@ -36,6 +36,15 @@ public class MarkedPositionTestFixtureBuilder {
 		return this;
 	}
 	
+	public MarkedPositionTestFixtureBuilder withDifferentRowsAndSameColumn(int[] rows, int column) {
+		for(int i = 0; i < rows.length; i++) {
+			FakeMarkedPosition markedPosition = markedPositions.get(i);
+			markedPosition.row = rows[i];
+			markedPosition.col = column;
+		}
+		return this;
+	}
+
 	public MarkedPositionTestFixtureBuilder withMark(Mark mark) {
 		for(FakeMarkedPosition markedPosition : markedPositions) {
 			markedPosition.mark = mark;
@@ -79,4 +88,5 @@ public class MarkedPositionTestFixtureBuilder {
 
 		
 	}
+
 }
