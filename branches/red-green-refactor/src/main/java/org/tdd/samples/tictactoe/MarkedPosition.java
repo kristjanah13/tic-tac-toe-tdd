@@ -2,6 +2,8 @@ package org.tdd.samples.tictactoe;
 
 import org.apache.commons.lang.builder.CompareToBuilder;
 import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 public class MarkedPosition implements Comparable<MarkedPosition> {
 
@@ -36,14 +38,15 @@ public class MarkedPosition implements Comparable<MarkedPosition> {
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return new HashCodeBuilder()
+		    .append(position)
+		    .append(mark)
+			.toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return ReflectionToStringBuilder.toString(this);
 	}
 
 	public int compareTo(MarkedPosition that) {
