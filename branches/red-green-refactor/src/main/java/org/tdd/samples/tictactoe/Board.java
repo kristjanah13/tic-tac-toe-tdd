@@ -47,29 +47,29 @@ public class Board {
 	
 	public Line getRow(Position position) {
 		int effectiveRow = position.getEffectiveRow();
-		MarkedPosition[] positions = new MarkedPosition[3];
-		for(int i = 0; i < positions.length; i++) {
-			positions[i] = new MarkedPosition(effectiveRow+1, i+1, marks[effectiveRow][i]);
+		Mark[] lineMarks = new Mark[3];
+		for(int i = 0; i < lineMarks.length; i++) {
+			lineMarks[i] = marks[effectiveRow][i];
 		}
-		return new Line(positions);
+		return new Line(lineMarks);
 	}
 
 	public Line getColumn(Position position) {
 		int effectiveColumn = position.getEffectiveColumn();
-		MarkedPosition[] positions = new MarkedPosition[3];
-		for(int i = 0; i < positions.length; i++) {
-			positions[i] = new MarkedPosition(i+1, effectiveColumn+1, marks[i][effectiveColumn]);
+		Mark[] lineMarks = new Mark[3];
+		for(int i = 0; i < lineMarks.length; i++) {
+			lineMarks[i] = marks[i][effectiveColumn];
 		}
-		return new Line(positions);
+		return new Line(lineMarks);
 	}
 
 	public Set<Line> getDiagonals(Position position) {
 		Set<Line> diagonals = new HashSet<Line>();
 		if(UPPER_LEFT_TO_LOWER_RIGHT.contains(position)) {
-			diagonals.add(new Line(new MarkedPosition[]{new MarkedPosition(1,1,marks[0][0]), new MarkedPosition(2,2,marks[1][1]), new MarkedPosition(3,3,marks[2][2])}));
+			diagonals.add(new Line(new Mark[]{marks[0][0], marks[1][1], marks[2][2]}));
 		}
 		if(UPPER_RIGHT_TO_LOWER_LEFT.contains(position)) {
-			diagonals.add(new Line(new MarkedPosition[]{new MarkedPosition(1,3,marks[0][2]), new MarkedPosition(2,2,marks[1][1]), new MarkedPosition(3,1,marks[2][0])}));
+			diagonals.add(new Line(new Mark[]{marks[0][2], marks[1][1], marks[2][0]}));
 		}
 		return diagonals;
 	}

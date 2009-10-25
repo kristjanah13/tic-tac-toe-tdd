@@ -120,7 +120,7 @@ public class BoardTest extends TestSuite {
 			Line row = board.getRow(new Position(2, 3));
 			
 			assertEquals("Should have returned the marks with all the rows equal to 2.", 
-					new Line(new MarkedPosition[]{new MarkedPosition(2, 1, Mark.NONE), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(2, 3, Mark.NONE)}), row);
+					new Line(new Mark[]{Mark.NONE, Mark.NONE, Mark.NONE}), row);
 		}
 	}
 	
@@ -130,17 +130,17 @@ public class BoardTest extends TestSuite {
 			Line row = board.getColumn(new Position(2, 3));
 			
 			assertEquals("Should have returned the marks with all the columns equal to 3.", 
-					new Line(new MarkedPosition[]{new MarkedPosition(1, 3, Mark.NONE), new MarkedPosition(2, 3, Mark.NONE), new MarkedPosition(3, 3, Mark.NONE)}), row);
+					new Line(new Mark[]{Mark.NONE, Mark.NONE, Mark.NONE}), row);
 		}
 	}
 
 	public static class WhenGetDiagonals extends GivenNonEmptyBoard {
 		
 		private static final Line UPPER_LEFT_TO_LOWER_RIGHT_DIAGONAL 
-		= new Line(new MarkedPosition[]{new MarkedPosition(1, 1, Mark.X), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(3, 3, Mark.NONE)});
+		= new Line(new Mark[]{Mark.X, Mark.NONE, Mark.NONE});
 		
 		private static final Line UPPER_RIGHT_TO_LOWER_LEFT_DIAGONAL 
-		= new Line(new MarkedPosition[]{new MarkedPosition(1, 3, Mark.NONE), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(3, 1, Mark.NONE)});
+		= new Line(new Mark[]{Mark.NONE, Mark.NONE, Mark.NONE});
 		
 		public void testGivenInUpperLeftToLowerRightDiagonal_ThenReturnUpperLeftToLowerRightDiagonal() {
 			Set<Line> diagonals = board.getDiagonals(new Position(1, 1));
