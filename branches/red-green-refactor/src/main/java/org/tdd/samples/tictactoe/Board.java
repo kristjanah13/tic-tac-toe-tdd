@@ -1,5 +1,7 @@
 package org.tdd.samples.tictactoe;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +15,10 @@ public class Board {
 	private static final String ROW_SEPARATOR = "\n";
 	private static final String COL_SEPARATOR = " ";
 	private final Mark[][] marks;
+	
+	private static final List<Position> UPPER_LEFT_TO_LOWER_RIGHT = Arrays.asList(new Position(1,1), new Position(2,2), new Position(3,3));
+	
+	private static final List<Position> UPPER_RIGHT_TO_LOWER_LEFT = Arrays.asList(new Position(3,1), new Position(2,2), new Position(1,3));
 	
 	public Board() {
 		this(new Mark[][]{
@@ -57,6 +63,17 @@ public class Board {
 		return new Line(positions);
 	}
 
+	public Set<Line> getDiagonals(Position position) {
+		Set<Line> diagonals = new HashSet<Line>();
+		if(UPPER_LEFT_TO_LOWER_RIGHT.contains(position)) {
+			diagonals.add(new Line(new MarkedPosition[]{new MarkedPosition(1,1,marks[0][0]), new MarkedPosition(2,2,marks[1][1]), new MarkedPosition(3,3,marks[2][2])}));
+		}
+		if(UPPER_RIGHT_TO_LOWER_LEFT.contains(position)) {
+			diagonals.add(new Line(new MarkedPosition[]{new MarkedPosition(1,3,marks[0][2]), new MarkedPosition(2,2,marks[1][1]), new MarkedPosition(3,1,marks[2][0])}));
+		}
+		return diagonals;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null || !obj.getClass().isAssignableFrom(Board.class)) {
@@ -89,10 +106,6 @@ public class Board {
 			.append("\n")
 			.append(StringUtils.join(marksPerRow, ROW_SEPARATOR))
 			.append("}").toString();
-	}
-
-	public Set<Line> getDiagonals(Position position) {
-		return null;
 	}
 
 }
