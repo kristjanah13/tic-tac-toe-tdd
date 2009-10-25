@@ -250,8 +250,20 @@ public class TicTacToeTest extends TestSuite {
 	}
 	
 	public static class GivenEndGame_WhenMove extends AbstractTicTacToeTest {
+		
 		public void test_ThenThrowGameOverException() {
+			ticTacToe.move(new MarkedPosition(1, 1, Mark.X));
+			ticTacToe.move(new MarkedPosition(2, 1, Mark.O));
+			ticTacToe.move(new MarkedPosition(1, 2, Mark.X));
+			ticTacToe.move(new MarkedPosition(2, 2, Mark.O));
+			ticTacToe.move(new MarkedPosition(1, 3, Mark.X));
 			
+			try {
+				ticTacToe.move(new MarkedPosition(2, 3, Mark.O));
+				fail("Should not have been able to move after the game as finished.");
+			} catch(GameOverException e) {
+				// expected behavior
+			}
 		}
 	}
 	
