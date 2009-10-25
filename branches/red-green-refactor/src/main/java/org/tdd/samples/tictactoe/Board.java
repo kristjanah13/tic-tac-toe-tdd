@@ -2,6 +2,7 @@ package org.tdd.samples.tictactoe;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -88,6 +89,10 @@ public class Board {
 			.append("\n")
 			.append(StringUtils.join(marksPerRow, ROW_SEPARATOR))
 			.append("}").toString();
+	}
+
+	public Set<Line> getDiagonals(Position position) {
+		return null;
 	}
 
 }
