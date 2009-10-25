@@ -1,5 +1,9 @@
 package org.tdd.samples.tictactoe;
 
+import java.util.Set;
+
+import static org.fest.assertions.Assertions.*;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -13,6 +17,7 @@ public class BoardTest extends TestSuite {
 		allTests.addTestSuite(WhenIsMarked.class);
 		allTests.addTestSuite(WhenGetRow.class);
 		allTests.addTestSuite(WhenGetColumn.class);
+		allTests.addTestSuite(WhenGetDiagonals.class);
 		return allTests;
 	}
 	
@@ -126,6 +131,41 @@ public class BoardTest extends TestSuite {
 			
 			assertEquals("Should have returned the marks with all the columns equal to 3.", 
 					new Line(new MarkedPosition[]{new MarkedPosition(1, 3, Mark.NONE), new MarkedPosition(2, 3, Mark.NONE), new MarkedPosition(3, 3, Mark.NONE)}), row);
+		}
+	}
+
+	public static class WhenGetDiagonals extends GivenNonEmptyBoard {
+		
+		private static final Line UPPER_LEFT_TO_LOWER_RIGHT_DIAGONAL 
+		= new Line(new MarkedPosition[]{new MarkedPosition(1, 1, Mark.X), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(3, 3, Mark.NONE)});
+		
+		private static final Line UPPER_RIGHT_TO_LOWER_LEFT_DIAGONAL 
+		= new Line(new MarkedPosition[]{new MarkedPosition(1, 3, Mark.NONE), new MarkedPosition(2, 2, Mark.NONE), new MarkedPosition(3, 1, Mark.NONE)});
+		
+		public void testGivenInUpperLeftToLowerRightDiagonal_ThenReturnUpperLeftToLowerRightDiagonal() {
+			Set<Line> diagonals = board.getDiagonals(new Position(1, 1));
+			
+			assertThat(diagonals).containsOnly(UPPER_LEFT_TO_LOWER_RIGHT_DIAGONAL);
+		}
+
+		public void testGivenInUpperRightToLowerLeftDiagonal_ThenReturnUpperRightToLowerLeftDiagonal() {
+			Set<Line> diagonals = board.getDiagonals(new Position(1, 3));
+			
+			assertThat(diagonals).containsOnly(UPPER_RIGHT_TO_LOWER_LEFT_DIAGONAL);
+		}
+		
+		public void testGivenInCenter_ThenReturnBothDiagonals() {
+			Set<Line> diagonals = board.getDiagonals(new Position(2, 2));
+			
+			assertThat(diagonals).containsOnly(
+					UPPER_LEFT_TO_LOWER_RIGHT_DIAGONAL, 
+					UPPER_RIGHT_TO_LOWER_LEFT_DIAGONAL);
+		}
+		
+		public void testGiveNotInDiagonalLine_ThenReturnEmptySet() {
+			Set<Line> diagonals = board.getDiagonals(new Position(2, 1));
+			
+			assertThat(diagonals).isEmpty();
 		}
 	}
 }
