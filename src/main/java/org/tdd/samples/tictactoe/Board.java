@@ -48,7 +48,12 @@ public class Board {
 	}
 
 	public Line getColumn(Position position) {
-		return null;
+		int effectiveColumn = position.getEffectiveColumn();
+		MarkedPosition[] positions = new MarkedPosition[3];
+		for(int i = 0; i < positions.length; i++) {
+			positions[i] = new MarkedPosition(i+1, effectiveColumn+1, marks[i][effectiveColumn]);
+		}
+		return new Line(positions);
 	}
 
 	@Override
