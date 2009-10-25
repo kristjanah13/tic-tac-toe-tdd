@@ -8,12 +8,19 @@ public class TicTacToe {
 
 	private final Board board;
 	
+	private Mark lastMark;
+	
 	public TicTacToe() {
 		board = new Board();
 	}
 
 	public Result move(MarkedPosition markedPosition) {
-		if(markedPosition.getMark() != Mark.X && markedPosition.getMark() != Mark.O ) {
+		if(lastMark == markedPosition.getMark()) {
+			throw new IllegalMoveException(new StringBuilder()
+				.append(markedPosition.getMark())
+				.append(" was already the last mark. Cannot repeat the same mark successively.")
+				.toString());
+		} else if(markedPosition.getMark() != Mark.X && markedPosition.getMark() != Mark.O ) {
 			throw new IllegalMoveException(new StringBuilder()
 				.append(markedPosition.getMark())
 				.append(" is not a valid mark.")
@@ -31,6 +38,8 @@ public class TicTacToe {
 		}
 		
 		board.set(markedPosition);
+		
+		lastMark = markedPosition.getMark();
 		
 		Set<Line> allLines = new HashSet<Line>();
 		allLines.add(board.getRow(markedPosition.getPosition()));
