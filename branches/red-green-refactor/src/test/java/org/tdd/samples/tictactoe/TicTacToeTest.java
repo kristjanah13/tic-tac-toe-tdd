@@ -145,6 +145,7 @@ public class TicTacToeTest extends TestSuite {
 			}
 		}
 		
+		@SuppressWarnings("unused")
 		public void testGivenMarkedPositionWhichMakesAHorizontalLine_ThenWin() {
 			SETUP_TWO_HORIZONTAL_MARKS : { 
 				ticTacToe.move(new MarkedPosition(1, 1, Mark.O));
@@ -157,6 +158,7 @@ public class TicTacToeTest extends TestSuite {
 			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
 		
+		@SuppressWarnings("unused")
 		public void testGivenMarkedPositionWhichMakesAVerticalLine_ThenWin() {
 			SETUP_TWO_VERTICAL_MARKS : { 
 				ticTacToe.move(new MarkedPosition(1, 1, Mark.O));
@@ -169,6 +171,7 @@ public class TicTacToeTest extends TestSuite {
 			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
 		
+		@SuppressWarnings("unused")
 		public void testGivenMarkedPositionWhichMakesAnUpperLeftToLowerRightDiagonalLine_ThenWin() {
 			SETUP_DIAGONAL_LINE_FROM_UPPER_LEFT_TO_LOWER_RIGHT : { 
 				ticTacToe.move(new MarkedPosition(1, 2, Mark.O));
@@ -181,6 +184,7 @@ public class TicTacToeTest extends TestSuite {
 			assertEquals("X Should have won.", Result.X_WINS, result);
 		}
 		
+		@SuppressWarnings("unused")
 		public void testGivenMarkedPositionWhichMakesAnUpperRightToLowerLeftDiagonalLine_ThenWin() {
 			SETUP_DIAGONAL_LINE_FROM_UPPER_RIGHT_TO_LOWER_LEFT : { 
 				ticTacToe.move(new MarkedPosition(1, 2, Mark.O));
