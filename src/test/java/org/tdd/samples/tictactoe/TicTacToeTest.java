@@ -206,11 +206,20 @@ public class TicTacToeTest extends TestSuite {
 
 	public static class GivenRunningGame_AndLastMoveIsXMark_WhenMove extends AbstractGivenRunningGame_WhenMove {
 		public void testGivenAnXMark_ThenThrowIllegalMoveException() {
-			
+			try {
+				ticTacToe.move(new MarkedPosition(2,3,Mark.X));
+				fail("Should have thrown IllegalMoveException.");
+			} catch(IllegalMoveException e) {
+				// expected behavior
+			}
 		}
 		
 		public void testGivenAnOMark_ThenDoNotThrowIllegalMoveException() {
-			
+			try {
+				ticTacToe.move(new MarkedPosition(2,3,Mark.O));
+			} catch(IllegalMoveException e) {
+				fail("Should NOT have thrown IllegalMoveException.");
+			}
 		}
 	}
 	
