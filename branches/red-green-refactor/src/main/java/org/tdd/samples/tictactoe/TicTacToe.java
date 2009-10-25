@@ -9,13 +9,18 @@ public class TicTacToe {
 	private final Board board;
 	
 	private Mark lastMark;
+
+	private Result result;
 	
 	public TicTacToe() {
 		board = new Board();
+		result = Result.GAME_IS_ONGOING;
 	}
 
 	public Result move(MarkedPosition markedPosition) {
-		if(lastMark == markedPosition.getMark()) {
+		if(result != Result.GAME_IS_ONGOING) {
+			throw new GameOverException("Game has already finished.");
+		} else if(lastMark == markedPosition.getMark()) {
 			throw new IllegalMoveException(new StringBuilder()
 				.append(markedPosition.getMark())
 				.append(" was already the last mark. Cannot repeat the same mark successively.")
@@ -46,7 +51,6 @@ public class TicTacToe {
 		allLines.add(board.getColumn(markedPosition.getPosition()));
 		allLines.addAll( board.getDiagonals(markedPosition.getPosition()));
 		
-		Result result = Result.GAME_IS_ONGOING;
 		Iterator<Line> i = allLines.iterator();
 		while(result == Result.GAME_IS_ONGOING && i.hasNext()) {
 			Line line = i.next();
