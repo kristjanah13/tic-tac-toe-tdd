@@ -224,12 +224,28 @@ public class TicTacToeTest extends TestSuite {
 	}
 	
 	public static class GivenRunningGame_AndLastMoveIsOMark_WhenMove extends AbstractGivenRunningGame_WhenMove {
+		
+		@Override
+		protected void setUp() throws Exception {
+			super.setUp();
+			ticTacToe.move(new MarkedPosition(2,3,Mark.O));
+		}
+
 		public void testGivenAnXMark_ThenDoNotThrowIllegalMoveException() {
-			
+			try {
+				ticTacToe.move(new MarkedPosition(3,3,Mark.X));
+			} catch(IllegalMoveException e) {
+				fail("Should NOT have thrown IllegalMoveException.");
+			}
 		}
 		
 		public void testGivenAnOMark_ThenThrowIllegalMoveException() {
-			
+			try {
+				ticTacToe.move(new MarkedPosition(3,3,Mark.O));
+				fail("Should have thrown IllegalMoveException.");
+			} catch(IllegalMoveException e) {
+				// expected behavior
+			}
 		}
 	}
 	
